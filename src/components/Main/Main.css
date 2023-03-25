@@ -1,0 +1,57 @@
+#main{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+#investment__card{
+    width: 32rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+.card__col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card__row{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.investment__label {
+  font-weight: 500;
+}
+
+.investment__input {
+  padding: 12px 1rem;
+
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+
+    outline: none;  
+}
+
+.investment__input:focus {
+    border: 1px solid #aaa;
+    background-color: #f5f5f5;
+}
+
+.investment__button{
+    padding: 12px 1rem;
+    width: 100%;
+
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background-color: #fff;
+    cursor: pointer;
+    outline: none;
+}
