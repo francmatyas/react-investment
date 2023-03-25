@@ -1,26 +1,45 @@
 import "./Graph.css";
-import { VictoryChart, VictoryLine } from "victory";
+import { VictoryAxis, VictoryChart, VictoryLine } from "victory";
 
-function Graph() {
+function Graph(props) {
+  const { data } = props;
+
   return (
     <div id="graph">
       <VictoryChart>
-        <VictoryLine
-        animate={{
-          duration: 2000,
-          onLoad: { duration: 1000 }
-        }}
-          style={{
-            data: { stroke: "#c43a31" },
-            parent: { border: "1px solid #ccc" },
+        <VictoryAxis
+          dependentAxis
+          tickFormat={(x) => {
+            if (x >= 1000000) {
+              return `${x / 1000000}M Kč`;
+            } else if (x >= 1000) {
+              return `${x / 1000}k Kč`;
+            } else {
+              return `${x} Kč`;
+            }
           }}
-          data={[
-            { x: 1, y: 2 },
-            { x: 2, y: 3 },
-            { x: 3, y: 5 },
-            { x: 4, y: 4 },
-            { x: 5, y: 7 },
-          ]}
+          style={{
+            axisLabel: { padding: 30 },
+            tickLabels: { fontSize: 8, padding: 5 },
+          }}
+        />
+        <VictoryAxis
+          tickFormat={(x) => `${x} měs.`}
+          style={{
+            axisLabel: { padding: 30 },
+            tickLabels: { fontSize: 8, padding: 5 },
+          }}
+        />
+        <VictoryLine
+          animate={{
+            duration: 2000,
+            onLoad: { duration: 1000 },
+          }}
+          style={{
+            data: { stroke: "#007FFF" },
+            parent: { border: "1px solid #fff" },
+          }}
+          data={data}
         />
       </VictoryChart>
     </div>
