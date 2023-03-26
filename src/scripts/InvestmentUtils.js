@@ -5,22 +5,37 @@ export class InvestmentUtils {
     this.returnRate = returnRate;
     this.months = months;
 
-    [this.resultInvestment, this.resultInterest] = this.#calculateInvestment();
+    [this.graphData, this._tableData] = this.#calculateInvestment();
+  }
+
+  getTableData() {
+    const chunks = [];
+    for (let i = 0; i < this._tableData.length; i += 12) {
+      chunks.push(this._tableData.slice(i, i + 12));
+    }
+    return chunks;
   }
 
   #calculateInvestment() {
-    const result = [];
-    let interest = 0;
+    const graphData = [];
+    const tableData = [];
 
+    let startAmount = this.startAmount;
     let totalAmount = this.startAmount;
     for (let i = 1; i <= this.months; i++) {
-      interest = interest + totalAmount * (this.returnRate / 100 / 12);
       totalAmount =
         totalAmount * (1 + this.returnRate / 100 / 12) +
         this.additionalContribution;
-      result.push({ x: i, y: totalAmount });
+      tableData.push({
+        month: i,
+        startValue: startAmount,
+        interest: startAmount * (this.returnRate / 100 / 12),
+        finalValue: totalAmount,
+      });
+      graphData.push({ x: i, y: totalAmount });
+      startAmount = totalAmount;
     }
-    return [result, interest];
+    return [graphData, tableData];
   }
 
   getStartAmount() {
@@ -29,11 +44,13 @@ export class InvestmentUtils {
 
   getFinalValue() {
     return `${Math.ceil(
-      this.resultInvestment[this.resultInvestment.length - 1].y
+      this.graphData[this.graphData.length - 1].y
     ).toLocaleString("cs-CZ")} Kč`;
   }
 
   getFinalInterest() {
-    return `${Math.ceil(this.resultInterest).toLocaleString("cs-CZ")} Kč`;
+    return `${Math.ceil(
+      this._tableData.map(({ interest }) => interest).reduce((a, b) => a + b)
+    ).toLocaleString("cs-CZ")} Kč`;
   }
 }

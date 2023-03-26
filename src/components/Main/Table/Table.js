@@ -1,9 +1,49 @@
 import "./Table.css";
+import { useState } from "react";
 
-function Table() {
+import TablePage from "./TablePage";
+
+function Table(props) {
+  const { data } = props;
+
+  const [page, setPage] = useState(0);
+
+  function handlePrevPage() {
+    if (page > 0) {
+      setPage(page - 1);
+    }
+  }
+
+  function handleNextPage() {
+    if (page < data.length - 1) {
+      setPage(page + 1);
+    }
+  }
+
   return (
-    <div className="Table">
-      <h2>Table</h2>
+    <div id="table">
+      <TablePage data={data[page]} year={page + 1} />
+
+      <div id="table__controls">
+        <button
+          className={
+            "table__controls__button " +
+            (page === 0 && " table__controls__button--disabled")
+          }
+          onClick={handlePrevPage}
+        >
+          Předchozí rok
+        </button>
+        <button
+          className={
+            "table__controls__button " +
+            (page === data.length - 1 && "table__controls__button--disabled")
+          }
+          onClick={handleNextPage}
+        >
+          Následující rok
+        </button>
+      </div>
     </div>
   );
 }

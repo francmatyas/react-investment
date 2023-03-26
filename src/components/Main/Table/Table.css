@@ -1,0 +1,43 @@
+#table{
+    width: 40rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#table__controls{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.table__controls__button{
+    padding: 12px 1rem;
+
+    border-radius: 8px;
+    border: none;
+
+    font-size: 1rem;
+    background-color: #EDF6FF;
+    color: #007FFF;
+    cursor: pointer;
+    outline: none;
+}
+
+.table__controls__button:hover, .table__controls__button:focus{
+    background-color: #007FFF;
+    color: #fff;
+}
+
+.table__controls__button--disabled{
+    background-color: #ccc;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+.table__controls__button--disabled:hover, .table__controls__button--disabled:focus{
+    background-color: #ccc;
+    color: #fff;
+}
+
