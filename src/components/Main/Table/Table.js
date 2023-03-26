@@ -22,7 +22,8 @@ function Table(props) {
 
   return (
     <div id="table">
-      <TablePage data={data[page]} year={page + 1} />
+      <h2>Rok {page + 1}. Vašeho investování.</h2>
+      <TablePage data={data[page]} />
 
       <div id="table__controls">
         <button

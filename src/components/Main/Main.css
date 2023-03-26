@@ -1,6 +1,37 @@
-#main{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding: 2rem;
+#main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+#main__investment{
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+}
+
+#main__results{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+#investment__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.investment__details {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  font-weight: 500;
+}
+
+.investment__details__number {
+  font-weight: 500;
+  color: #007fff;
 }

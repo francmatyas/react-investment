@@ -4,12 +4,12 @@ function TableRow(props) {
   const { data } = props;
   const { month, startValue, interest, finalValue } = data;
   return (
-    <div id="table__row">
-      <p>{month}</p>
-      <p>{`${Math.ceil(startValue).toLocaleString("cs-CZ")} Kč`}</p>
-      <p>{`${Math.ceil(interest).toLocaleString("cs-CZ")} Kč`}</p>
-      <p>{`${Math.ceil(finalValue).toLocaleString("cs-CZ")} Kč`}</p>
-    </div>
+    <tr id="table__row">
+      <td>{month}</td>
+      <td>{`${Math.ceil(startValue).toLocaleString("cs-CZ")} Kč`}</td>
+      <td>{`${Math.ceil(interest).toLocaleString("cs-CZ")} Kč`}</td>
+      <td>{`${Math.ceil(finalValue).toLocaleString("cs-CZ")} Kč`}</td>
+    </tr>
   );
 }
 

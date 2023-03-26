@@ -1,11 +1,13 @@
 export class InvestmentUtils {
   constructor(startAmount, additionalContribution, returnRate, months) {
-    this.startAmount = startAmount;
-    this.additionalContribution = additionalContribution;
-    this.returnRate = returnRate;
-    this.months = months;
+    this.startAmount = isNaN(startAmount) ? 0 : parseInt(startAmount);
+    this.additionalContribution = isNaN(additionalContribution)
+      ? 0
+      : parseInt(additionalContribution);
+    this.returnRate = isNaN(returnRate) ? 0 : parseInt(returnRate);
+    this.months = isNaN(months) ? 1 : parseInt(months);
 
-    [this.graphData, this._tableData] = this.#calculateInvestment();
+    [this.graphData, this._tableData] = this.#calculateInterest();
   }
 
   getTableData() {
@@ -16,7 +18,18 @@ export class InvestmentUtils {
     return chunks;
   }
 
-  #calculateInvestment() {
+  getInvestmentData() {
+    const data = [];
+    for (let i = 1; i <= this.months; i++) {
+      data.push({
+        x: i,
+        y: this.startAmount + i * this.additionalContribution,
+      });
+    }
+    return data;
+  }
+
+  #calculateInterest() {
     const graphData = [];
     const tableData = [];
 
@@ -39,18 +52,18 @@ export class InvestmentUtils {
   }
 
   getStartAmount() {
-    return `${this.startAmount.toLocaleString("cs-CZ")} Kč`;
+    return `${this.startAmount.toLocaleString("cs-CZ")} Kč`;
   }
 
   getFinalValue() {
     return `${Math.ceil(
       this.graphData[this.graphData.length - 1].y
-    ).toLocaleString("cs-CZ")} Kč`;
+    ).toLocaleString("cs-CZ")} Kč`;
   }
 
   getFinalInterest() {
     return `${Math.ceil(
       this._tableData.map(({ interest }) => interest).reduce((a, b) => a + b)
-    ).toLocaleString("cs-CZ")} Kč`;
+    ).toLocaleString("cs-CZ")} Kč`;
   }
 }

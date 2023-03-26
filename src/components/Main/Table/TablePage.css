@@ -1,5 +1,4 @@
 #table__page__header{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    justify-content: center;
+    grid-template-columns: 4rem 1fr 1fr 1fr;
 }

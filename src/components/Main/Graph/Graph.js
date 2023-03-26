@@ -2,10 +2,11 @@ import "./Graph.css";
 import { VictoryAxis, VictoryChart, VictoryLine } from "victory";
 
 function Graph(props) {
-  const { data } = props;
+  const { interest, investment } = props;
 
   return (
     <div id="graph">
+      <h2>Průběh Vašeho investování</h2>
       <VictoryChart>
         <VictoryAxis
           dependentAxis
@@ -39,7 +40,18 @@ function Graph(props) {
             data: { stroke: "#007FFF" },
             parent: { border: "1px solid #fff" },
           }}
-          data={data}
+          data={interest}
+        />
+        <VictoryLine
+          animate={{
+            duration: 2000,
+            onLoad: { duration: 1000 },
+          }}
+          style={{
+            data: { stroke: "#A4D1FF" },
+            parent: { border: "1px solid #fff" },
+          }}
+          data={investment}
         />
       </VictoryChart>
     </div>
