@@ -1,11 +1,9 @@
 export class InvestmentUtils {
   constructor(startAmount, additionalContribution, returnRate, months) {
-    this.startAmount = isNaN(startAmount) ? 0 : parseInt(startAmount);
-    this.additionalContribution = isNaN(additionalContribution)
-      ? 0
-      : parseInt(additionalContribution);
-    this.returnRate = isNaN(returnRate) ? 0 : parseInt(returnRate);
-    this.months = isNaN(months) ? 1 : parseInt(months);
+    this.startAmount = parseInt(startAmount);
+    this.additionalContribution = parseInt(additionalContribution);
+    this.returnRate = parseInt(returnRate);
+    this.months = parseInt(months);
 
     [this.graphData, this._tableData] = this.#calculateInterest();
   }

@@ -1,16 +1,27 @@
 import "./InputForm.css";
+import { useState, useEffect } from "react";
+import { InvestmentUtils } from "../../../scripts/InvestmentUtils";
 
 function InputForm(props) {
-  const {
-    startAmount,
-    additionalContribution,
-    returnRate,
-    years,
-    setStartAmount,
-    setAdditionalContribution,
-    setReturnRate,
-    setYears,
-  } = props;
+  const [startAmount, setStartAmount] = useState(100000);
+  const [additionalContribution, setAdditionalContribution] = useState(1000);
+  const [returnRate, setReturnRate] = useState(7);
+  const [years, setYears] = useState(10);
+
+  useEffect(() => {
+    props.onInputChange(
+      new InvestmentUtils(
+        startAmount,
+        additionalContribution,
+        returnRate,
+        years * 12
+      )
+    );
+  }, [startAmount, additionalContribution, returnRate, years]);
+
+  function correctNaN(value) {
+    return value.length === 0 ? 0 : value;
+  }
 
   return (
     <form id="input__form">
@@ -26,7 +37,7 @@ function InputForm(props) {
           min="0"
           required
           value={startAmount}
-          onChange={(event) => setStartAmount(event.target.value)}
+          onChange={(event) => setStartAmount(correctNaN(event.target.value))}
         />
       </div>
 
@@ -41,7 +52,7 @@ function InputForm(props) {
           min="0"
           value={additionalContribution}
           onChange={(event) => {
-            setAdditionalContribution(event.target.value);
+            setAdditionalContribution(correctNaN(event.target.value));
           }}
         />
       </div>
@@ -57,7 +68,7 @@ function InputForm(props) {
           min="0"
           required
           value={returnRate}
-          onChange={(event) => setReturnRate(event.target.value)}
+          onChange={(event) => setReturnRate(correctNaN(event.target.value))}
         />
       </div>
 
@@ -72,7 +83,10 @@ function InputForm(props) {
           min="1"
           required
           value={years}
-          onChange={(event) => setYears(event.target.value)}
+          onChange={(event) => {
+            const value = event.target.value;
+            setYears(value.length === 0 ? 1 : value);
+          }}
         />
       </div>
     </form>

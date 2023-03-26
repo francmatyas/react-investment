@@ -1,93 +1,71 @@
 import "./Main.css";
 import { useState, useEffect } from "react";
-import { InvestmentUtils } from "../../scripts/InvestmentUtils";
 
 import Graph from "./Graph/Graph";
 import Table from "./Table/Table";
 import InputForm from "./InputForm/InputForm";
 import Card from "../Design/Card";
+import Tutorial from "./Tutorial/Tutorial";
 
 function Main() {
-  const [startAmount, setStartAmount] = useState(100000);
-  const [additionalContribution, setAdditionalContribution] = useState(1000);
-  const [returnRate, setReturnRate] = useState(7);
-  const [years, setYears] = useState(10);
-
-  const [investmentUtils, setInvestmentUtils] = useState(
-    new InvestmentUtils(
-      startAmount,
-      additionalContribution,
-      returnRate,
-      years * 12
-    )
-  );
-
-  console.log(investmentUtils.startAmount);
+  const [investmentUtils, setInvestmentUtils] = useState();
+  const [showData, setShowData] = useState(false);
 
   useEffect(() => {
-    setInvestmentUtils(
-      new InvestmentUtils(
-        startAmount,
-        additionalContribution,
-        returnRate,
-        years * 12
-      )
-    );
-  }, [startAmount, additionalContribution, returnRate, years]);
-
-  //onsole.table(investmentUtils.graphData);
+    if (investmentUtils) {
+      if (
+        investmentUtils.startAmount === 0 ||
+        investmentUtils.returnRate === 0
+      ) {
+        setShowData(false);
+      } else {
+        setShowData(true);
+      }
+    } else {
+      setShowData(false);
+    }
+  }, [investmentUtils]);
 
   return (
     <main id="main">
       <Card>
         <div id="main__investment">
-          <InputForm
-            startAmount={startAmount}
-            additionalContribution={additionalContribution}
-            returnRate={returnRate}
-            years={years}
-            setStartAmount={setStartAmount}
-            setAdditionalContribution={setAdditionalContribution}
-            setReturnRate={setReturnRate}
-            setYears={setYears}
-          />
+          <InputForm onInputChange={(value) => setInvestmentUtils(value)} />
           <div id="investment__results">
             <h2 id="investment__title">Výsledek</h2>
             <div>
               <p className="investment__details">
                 Investovaná částka:
                 <span className="investment__details__number">
-                  {investmentUtils.getStartAmount()}
+                  {investmentUtils?.getStartAmount()}
                 </span>
               </p>
               <p className="investment__details">
                 Obdržený úrok:
                 <span className="investment__details__number">
-                  {investmentUtils.getFinalInterest()}
+                  {showData ? investmentUtils?.getFinalInterest() : "0 Kč"}
                 </span>
               </p>
               <p className="investment__details">
                 Výsledná částka:
                 <span className="investment__details__number">
-                  {investmentUtils.getFinalValue()}
+                  {showData ? investmentUtils?.getFinalValue() : "0 Kč"}
                 </span>
               </p>
             </div>
           </div>
+          <Tutorial />
         </div>
       </Card>
 
-      <div id="main__results">
-        <Card>
-          <Graph
-            interest={investmentUtils.graphData}
-            investment={investmentUtils.getInvestmentData()}
-          />
-        </Card>
+      <div className="main__row">
+        <Graph
+          show={showData}
+          interest={investmentUtils?.graphData}
+          investment={investmentUtils?.getInvestmentData()}
+        />
 
-        <Card>
-          <Table data={investmentUtils.getTableData()} />
-        </Card>
+        <Table data={investmentUtils?.getTableData()} show={showData} />
       </div>
     </main>
   );

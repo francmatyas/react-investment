@@ -11,10 +11,15 @@
   gap: 4rem;
 }
 
-#main__results{
+.main__row{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+}
+
+.main__results__error{
+  text-align: center;
+  color: gray;
 }
 
 #investment__title {
