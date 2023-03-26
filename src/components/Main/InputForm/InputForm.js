@@ -39,6 +39,9 @@ function InputForm(props) {
           value={startAmount}
           onChange={(event) => setStartAmount(correctNaN(event.target.value))}
         />
+        {startAmount === 0 && (
+          <p className="input__error">Vložte nějaké číslo, třeba 10 000</p>
+        )}
       </div>
 
       <div className="form__col">
@@ -70,6 +73,9 @@ function InputForm(props) {
           value={returnRate}
           onChange={(event) => setReturnRate(correctNaN(event.target.value))}
         />
+        {returnRate === 0 && (
+          <p className="input__error">Vložte nějaké číslo, třeba 7</p>
+        )}
       </div>
 
       <div className="form__col">

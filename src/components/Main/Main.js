@@ -30,7 +30,9 @@ function Main() {
     <main id="main">
       <Card>
         <div id="main__investment">
-          <InputForm onInputChange={(value) => setInvestmentUtils(value)} />
+          <InputForm
+            onInputChange={(value) => setInvestmentUtils(value)}
+          />
           <div id="investment__results">
             <h2 id="investment__title">Výsledek</h2>
             <div>
