@@ -1,5 +1,5 @@
 #tutorial{
-    width: 26rem;
+    width: 28rem;
     font-size: 18px;
 
     display: flex;
@@ -14,4 +14,8 @@
     margin-bottom: 1rem;
 
     color: #007fff;
+}
+
+#tutorial__img{
+    align-self: flex-end;
 }

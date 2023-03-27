@@ -1,3 +1,7 @@
 #graph{
     width: 100%;
 }
+
+#graph__title{
+    font-weight: 500;
+}

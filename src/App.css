@@ -1,4 +1,5 @@
 .App {
     display: grid;
     grid-template-rows: min-content auto;
+    overflow: hidden;
 }

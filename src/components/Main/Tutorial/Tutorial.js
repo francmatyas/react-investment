@@ -1,9 +1,12 @@
 import "./Tutorial.css";
+import investmentSvg from "../../../assets/svg/investing.svg";
+import Card from "../../Design/Card";
 
 function Tutorial() {
   return (
-    <div id="tutorial">
-      <div>
+    <Card>
+      <div id="tutorial">
+        <div>
         <p>
           Kalkulačka ti vypočítá, na kolik peněz si můžeš přijít při různých
           výších investic <strong>díky složenému úročení.</strong>
@@ -20,10 +23,15 @@ function Tutorial() {
           <li>Vyber, jak dlouho chceš investovat</li>
           <li>Spočítej si, kolik peněz můžeš získat!</li>
         </ul>
+        </div>
+        <img
+          src={investmentSvg}
+          height="120px"
+          alt="investment"
+          id="tutorial__img"
+        />
       </div>
-
-      <h2 id="tutorial__subtitle">Začni investovat ještě dnes!</h2>
-    </div>
+    </Card>
   );
 }
 
