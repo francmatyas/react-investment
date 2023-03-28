@@ -1,21 +1,25 @@
-#tutorial{
-    width: 28rem;
-    font-size: 18px;
+#tutorial {
+  width: 28rem;
+  font-size: 18px;
 
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-#tutorial__subtitle{
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-
-    color: #007fff;
+#tutorial__img {
+  align-self: flex-end;
 }
 
-#tutorial__img{
-    align-self: flex-end;
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  #tutorial {
+    width: 36rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #tutorial {
+    width: 100%;
+    font-size: 12px;
+  }
 }

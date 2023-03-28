@@ -1,27 +1,21 @@
-#input__form {
+#input-form {
   width: 28rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-.form__col {
+.input-form__col {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.card__row {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-}
-
-.investment__label {
+.input-form__label {
   font-weight: 500;
 }
 
-.investment__input {
+.input-form__input {
   padding: 12px 1rem;
   background-color: transparent;
 
@@ -30,14 +24,27 @@
   outline: none;
 }
 
-.investment__input:focus {
+.input-form__input:focus {
   border: 1px solid #aaa;
   background-color: #f9f9f9;
 }
 
-.input__error {
+.input-form__error {
   margin: 0;
   color: #007fff;
   font-weight: 500;
   font-size: 0.8rem;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  #input-form {
+    width: 36rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #input-form {
+    width: 100%;
+    font-size: 12px;
+  }
 }

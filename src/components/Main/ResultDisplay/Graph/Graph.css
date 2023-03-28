@@ -1,0 +1,14 @@
+#graph{
+    width: 100%;
+}
+
+#graph__title{
+    font-weight: 500;
+}
+
+  
+  @media screen and (max-width: 767px) {
+    #graph{
+      font-size: 12px;
+    }
+  }

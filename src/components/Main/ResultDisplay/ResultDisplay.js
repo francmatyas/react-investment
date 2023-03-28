@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 
 import noDataSvg from "../../../assets/svg/empty.svg";
 
-import Graph from "../Graph/Graph";
-import Table from "../Table/Table";
+import Graph from "./Graph/Graph";
+import Table from "./Table/Table";
 import Card from "../../Design/Card";
 
 function ResultDisplay(props) {

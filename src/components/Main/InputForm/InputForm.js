@@ -4,13 +4,14 @@ import { InvestmentUtils } from "../../../scripts/InvestmentUtils";
 import Card from "../../Design/Card";
 
 function InputForm(props) {
+  const { onInputChange } = props;
   const [startAmount, setStartAmount] = useState(100000);
   const [additionalContribution, setAdditionalContribution] = useState(1000);
   const [returnRate, setReturnRate] = useState(7);
   const [years, setYears] = useState(10);
 
   useEffect(() => {
-    props.onInputChange(
+    onInputChange(
       new InvestmentUtils(
         startAmount,
         additionalContribution,
@@ -18,78 +19,82 @@ function InputForm(props) {
         years * 12
       )
     );
-  }, [startAmount, additionalContribution, returnRate, years]);
+  }, [startAmount, additionalContribution, returnRate, years, onInputChange]);
 
-  function correctNaN(value) {
+  function correctInput(value) {
     return value.length === 0 ? 0 : value;
   }
 
   return (
     <Card>
-      <form id="input__form">
-        <div className="form__col">
-          <label htmlFor="start-amount" className="investment__label">
+      <form id="input-form">
+        <div className="input-form__col">
+          <label htmlFor="start-amount" className="input-form__label">
             Počáteční jednorázová investice
           </label>
 
           <input
             id="start-amount"
-            className="investment__input"
+            className="input-form__input"
             type="number"
             min="0"
             required
             value={startAmount}
-            onChange={(event) => setStartAmount(correctNaN(event.target.value))}
+            onChange={(event) =>
+              setStartAmount(correctInput(event.target.value))
+            }
           />
           {startAmount === 0 && (
-            <p className="input__error">Vlož nějaké číslo, třeba 10 000</p>
+            <p className="input-form__error">Vlož nějaké číslo, třeba 10 000</p>
           )}
         </div>
 
-        <div className="form__col">
+        <div className="input-form__col">
           <label
             htmlFor="additional-contribution"
-            className="investment__label"
+            className="input-form__label"
           >
             Pravidelná měsíční investice
           </label>
           <input
             id="additional-contribution"
-            className="investment__input"
+            className="input-form__input"
             type="number"
             min="0"
             value={additionalContribution}
             onChange={(event) => {
-              setAdditionalContribution(correctNaN(event.target.value));
+              setAdditionalContribution(correctInput(event.target.value));
             }}
           />
         </div>
 
-        <div className="form__col">
-          <label htmlFor="return-rate" className="investment__label">
+        <div className="input-form__col">
+          <label htmlFor="return-rate" className="input-form__label">
             Předpokládaná roční úroková sazba (%)
           </label>
           <input
             id="return-rate"
-            className="investment__input"
+            className="input-form__input"
             type="number"
             min="0"
             required
             value={returnRate}
-            onChange={(event) => setReturnRate(correctNaN(event.target.value))}
+            onChange={(event) =>
+              setReturnRate(correctInput(event.target.value))
+            }
           />
           {returnRate === 0 && (
-            <p className="input__error">Vlož nějaké číslo, třeba 7</p>
+            <p className="input-form__error">Vlož nějaké číslo, třeba 7</p>
           )}
         </div>
 
-        <div className="form__col">
-          <label htmlFor="years" className="investment__label">
+        <div className="input-form__col">
+          <label htmlFor="years" className="input-form__label">
             Na kolik let chcete investovat?
           </label>
           <input
             id="years"
-            className="investment__input"
+            className="input-form__input"
             type="number"
             min="1"
             required

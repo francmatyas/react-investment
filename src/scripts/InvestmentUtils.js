@@ -32,7 +32,7 @@ export class InvestmentUtils {
     const tableData = [];
 
     let startAmount = this.startAmount;
-    let totalAmount = this.startAmount;
+    let totalAmount = startAmount;
     for (let i = 1; i <= this.months; i++) {
       totalAmount =
         totalAmount * (1 + this.returnRate / 100 / 12) +

@@ -21,7 +21,7 @@ function Table(props) {
 
   return (
     <div id="table">
-      <h3 id="table__title">Rok {page + 1}. Vašeho investování.</h3>
+      <h3 id="table__title">Rok {page + 1}. Vašeho investování</h3>
       <TablePage data={data[page]} />
 
       <div id="table__controls">

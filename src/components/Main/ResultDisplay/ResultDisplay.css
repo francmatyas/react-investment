@@ -1,4 +1,4 @@
-#result-display{
+#result-display {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -30,7 +30,21 @@
   color: #007fff;
 }
 
-#result-display__error{
+#result-display__error {
   text-align: center;
   color: gray;
+}
+
+@media screen and (max-width: 767px) {
+  #result-display {
+    font-size: 12px;
+  }
+
+  #result-display__title {
+    font-size: 1.2rem;
+  }
+
+  .result-display__details {
+    font-size: 0.8rem;
+  }
 }

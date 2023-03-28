@@ -7,22 +7,22 @@ function Tutorial() {
     <Card>
       <div id="tutorial">
         <div>
-        <p>
-          Kalkulačka ti vypočítá, na kolik peněz si můžeš přijít při různých
-          výších investic <strong>díky složenému úročení.</strong>
-        </p>
+          <p>
+            Kalkulačka ti vypočítá, na kolik peněz si můžeš přijít při různých
+            výších investic <strong>díky složenému úročení.</strong>
+          </p>
 
-        <p>
-          <strong>Jak vyplnit kalkulačku?</strong>
-        </p>
+          <p>
+            <strong>Jak vyplnit kalkulačku?</strong>
+          </p>
 
-        <ul>
-          <li>Můžeš investovat jednorázově či pravidelně</li>
-          <li>Nebo zkombinovat obojí, což je nejefektivnější</li>
-          <li>Akciový trh přináší průměrně 6–8 % ročně</li>
-          <li>Vyber, jak dlouho chceš investovat</li>
-          <li>Spočítej si, kolik peněz můžeš získat!</li>
-        </ul>
+          <ul>
+            <li>Můžeš investovat jednorázově či pravidelně</li>
+            <li>Nebo zkombinovat obojí, což je nejefektivnější</li>
+            <li>Akciový trh přináší průměrně 6–8 % ročně</li>
+            <li>Vyber, jak dlouho chceš investovat</li>
+            <li>Spočítej si, kolik peněz můžeš získat!</li>
+          </ul>
         </div>
         <img
           src={investmentSvg}
